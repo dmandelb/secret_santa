@@ -2,19 +2,18 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :groups_users
   has_many :relationship_matchers, foreign_key: :shipper_a_id, class_name: "Relationship"
-  has_many :bad_matchers, through: :relationship_matchers, source: :relationship_matcher
+  has_many :bad_matchers, through: :relationship_matchers, source: :bad_match_2
   has_many :relationship_matchees, foreign_key: :shipper_b_id, class_name: "Relationship"
-  has_many :bad_matchees, through: :relationship_matchees, source: :relationship_matchee
+  has_many :bad_matchees, through: :relationship_matchees, source: :bad_match_1
 
   has_one :recipient, class_name: "User", foreign_key: :recipient_id
   belongs_to :giver, class_name: "User", foreign_key: :recipient_id
   validates :name, :email, presence: true
 
 
+  def bad_matches
+    self.bad_matchers + self.bad_matchees
+  end
 end
 
 
-  # necessary if #bad_matchers and #bad_matchees do not both yield full results
-  # def self.bad_matches
-  #   self.bad_matchers + self.bad_matchees
-  # end
