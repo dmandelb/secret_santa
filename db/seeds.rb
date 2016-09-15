@@ -24,16 +24,15 @@ s1 = Relationship.create(shipper_a_id: alaina.id, shipper_b_id: shannon.id)
 r3 = Relationship.create(shipper_a_id: alaina.id, shipper_b_id: tj.id)
 r4 = Relationship.create(shipper_a_id: shannon.id, shipper_b_id: scott.id)
 
-g1 = GroupsUser.new(group_id: group.id, user_id: dev.id)
-g2 = GroupsUser.new(group_id: group.id, user_id: robin.id)
-g3 = GroupsUser.new(group_id: group.id, user_id: val.id)
-g4 = GroupsUser.new(group_id: group.id, user_id: mike.id)
-g5 = GroupsUser.new(group_id: group.id, user_id: alex.id)
-g6 = GroupsUser.new(group_id: group.id, user_id: alaina.id)
-g7 = GroupsUser.new(group_id: group.id, user_id: shannon.id)
-g8 = GroupsUser.new(group_id: group.id, user_id: tj.id)
-g9 = GroupsUser.new(group_id: group.id, user_id: scott.id)
-binding.pry
+g1 = GroupsUser.create(group_id: group.id, user_id: dev.id)
+g2 = GroupsUser.create(group_id: group.id, user_id: robin.id)
+g3 = GroupsUser.create(group_id: group.id, user_id: val.id)
+g4 = GroupsUser.create(group_id: group.id, user_id: mike.id)
+g5 = GroupsUser.create(group_id: group.id, user_id: alex.id)
+g6 = GroupsUser.create(group_id: group.id, user_id: alaina.id)
+g7 = GroupsUser.create(group_id: group.id, user_id: shannon.id)
+g8 = GroupsUser.create(group_id: group.id, user_id: tj.id)
+g9 = GroupsUser.create(group_id: group.id, user_id: scott.id)
 
 
 
