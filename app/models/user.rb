@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   has_many :relationship_matchees, foreign_key: :shipper_b_id, class_name: "Relationship"
   has_many :bad_matchees, through: :relationship_matchees, source: :bad_match_1
 
-  has_one :giver, class_name: "User", foreign_key: :recipient_id
-  belongs_to :recipient, class_name: "User", foreign_key: :recipient_id
+  has_many :groups_givers, foreign_key: :recipient_id, class_name: "GroupsUser"
+
+  has_many :recipients, through: :groups_users, source: :user_recipient
+  has_many :givers, through: :groups_givers, source: :user_giver
   validates :name, :email, presence: true
   # validates :recipient, uniqueness: {scope: :groups}
 

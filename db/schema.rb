@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20160914155647) do
   end
 
   create_table "groups_users", force: :cascade do |t|
-    t.integer  "group_id",   null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "group_id",     null: false
+    t.integer  "user_id",      null: false
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 20160914155647) do
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.integer  "recipient_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

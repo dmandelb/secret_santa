@@ -3,6 +3,7 @@ class CreateGroupsUsers < ActiveRecord::Migration
     create_table :groups_users do |t|
       t.references :group, null: false
       t.references :user, null: false
+      t.references :recipient
 
       t.timestamps null: false
     end
