@@ -1,0 +1,11 @@
+<h2><%= @user.name %></h2>
+<p><%= @user.email %></p>
+<% if @user == current_user %>
+  <%= link_to "Edit info", edit_user_path %>
+<% end %>
+<h3>You have relationships with:</h3>
+<ul>
+  <% @relationships.each do |person| %>
+  <li><%= person.name %></li>
+  <% end %>
+</ul>
