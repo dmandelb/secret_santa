@@ -1,5 +1,7 @@
 <ul>
   <% @groups.each do |group| %>
-    <%= group.name %>
+    <li>
+      <a href="/groups/<%= group.id %>"><%= group.name %></a>
+    </li>
   <% end %>
 </ul>

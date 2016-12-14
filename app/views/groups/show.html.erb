@@ -1,0 +1,20 @@
+<h2><%= @group.name %></h2>
+<p>Admin: <%= @group.admin.name %></p>
+
+<% if current_user == @group.admin %>
+  <p>
+    Your secret key is <%= @group.secret_key %>
+  </p>
+  <p>
+    PUT HERE A LINK TO RUN THE ALGORITHM
+  </p>
+<% elsif logged_in? && !@group.users.include?(current_user) %>
+    PUT HERE A FORM ASKING IF THEY WANT TO JOIN THE GROUP, WITH A FIELD TO ENTER THE SECRET KEY
+<% end %>
+<% unless @group.users.empty? %>
+  <ul>
+    <% @group.users.each do |user| %>
+    <li><%= user.name %></li>
+    <% end %>
+  </ul>
+<% end %>
