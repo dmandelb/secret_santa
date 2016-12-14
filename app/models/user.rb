@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :groups_users
   has_many :groups, through: :groups_users
+  has_many :administrated_groups, class_name: "Group", foreign_key: :admin_id
   has_many :relationship_matchers, foreign_key: :shipper_a_id, class_name: "Relationship"
   has_many :bad_matchers, through: :relationship_matchers, source: :bad_match_2
   has_many :relationship_matchees, foreign_key: :shipper_b_id, class_name: "Relationship"
