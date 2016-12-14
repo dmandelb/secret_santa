@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :users, through: :groups_users
   belongs_to :admin, class_name: "User"
   validates :name, :admin, presence: true
+  before_create :create_secret_key
 
   def match_up
     begin
@@ -25,5 +26,9 @@ class Group < ActiveRecord::Base
 
   def any_bad_matches?(match_array)#want to pass in array, not use associations, because objects not saved yet
     match_array.any?{|person| person.bad_matches.include?(person.recipient)}
+  end
+
+  def create_secret_key
+    self.secret_key = SecureRandom.hex(8)
   end
 end
