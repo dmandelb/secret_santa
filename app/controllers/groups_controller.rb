@@ -5,5 +5,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.includes(:users).includes(:admin).find_by(id: params[:id])
+    @groups_user = GroupsUser.new
   end
 end
