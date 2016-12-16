@@ -9,7 +9,16 @@
     PUT HERE A LINK TO RUN THE ALGORITHM
   </p>
 <% elsif logged_in? && !@group.users.include?(current_user) %>
-    PUT HERE A FORM ASKING IF THEY WANT TO JOIN THE GROUP, WITH A FIELD TO ENTER THE SECRET KEY
+  <h3>Join this group:</h3>
+  <%= form_tag groups_users_path %>
+    <%= hidden_field_tag :group_id, @group.id %>
+    <div>
+      <%= label_tag "Group key" %>
+      <%= text_field_tag "secret_key" %>
+    </div>
+    <div>
+      <%= submit_tag "Join Group" %>
+    </div>
 <% end %>
 <% unless @group.users.empty? %>
   <ul>
